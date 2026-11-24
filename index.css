@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #0A0D14;
+    --bg-card: #10141E;
+    --border: #1E2538;
+    --text-primary: #F3F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0A0D14;
+    color: #F3F5F9;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL CONTENT & ANTI-COPY PROTECTION
+   Prevents text selection, dragging, and unauthorized content copying
+   ========================================================================== */
+*, *::before, *::after {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* Allow text input & cursor navigation inside form controls */
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Prevent image dragging and ghost selection */
+img, svg, a {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* Card hover lifts & shadows */
+.card-hover {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(139, 92, 246, 0.2);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(16, 20, 30, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* =========================================================================
+   GEMINI LIVING AURORA (LEFT-TO-RIGHT SWEEPING BEAM & DYNAMIC ORBITS)
+   ========================================================================= */
+
+/* Continuous left-to-right laser sweep at the very top of the screen */
+@keyframes geminiTopSweepLeftToRight {
+  0% {
+    left: -40%;
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    left: 110%;
+    opacity: 0.3;
+  }
+}
+
+.animate-gemini-sweep {
+  animation: geminiTopSweepLeftToRight 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: left, opacity;
+}
+
+@keyframes geminiStream {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes geminiPulseBlink {
+  0%, 100% {
+    opacity: 0.85;
+    box-shadow: 0 0 18px -2px rgba(37, 99, 235, 0.6), 0 0 32px -4px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 24px -2px rgba(239, 68, 68, 0.75), 0 0 40px -4px rgba(244, 63, 94, 0.45);
+  }
+}
+
+@keyframes geminiOrbBreath {
+  0%, 100% {
+    background-color: #2563EB;
+    box-shadow: 0 0 14px 2px #2563EB, 0 0 24px 4px rgba(59, 130, 246, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    background-color: #EF4444;
+    box-shadow: 0 0 18px 3px #EF4444, 0 0 30px 6px rgba(239, 68, 68, 0.65);
+    transform: scale(1.2);
+  }
+}
+
+@keyframes geminiBorderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Full-Screen Moving Orbits */
+@keyframes geminiOrbitBlue {
+  0% {
+    transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(45vw, 30vh) scale(1.25) rotate(90deg);
+  }
+  50% {
+    transform: translate(65vw, 65vh) scale(0.9) rotate(180deg);
+  }
+  75% {
+    transform: translate(15vw, 45vh) scale(1.3) rotate(270deg);
+  }
+  100% {
+    transform: translate(0vw, 0vh) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes geminiOrbitRed {
+  0% {
+    transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(-40vw, -35vh) scale(1.3) rotate(-90deg);
+  }
+  50% {
+    transform: translate(-65vw, -10vh) scale(0.85) rotate(-180deg);
+  }
+  75% {
+    transform: translate(-25vw, 30vh) scale(1.2) rotate(-270deg);
+  }
+  100% {
+    transform: translate(0vw, 0vh) scale(1) rotate(-360deg);
+  }
+}
+
+@keyframes geminiOrbitPurple {
+  0% {
+    transform: translate(0vw, 0vh) scale(0.95);
+  }
+  33% {
+    transform: translate(30vw, -25vh) scale(1.35);
+  }
+  66% {
+    transform: translate(-30vw, 30vh) scale(0.85);
+  }
+  100% {
+    transform: translate(0vw, 0vh) scale(0.95);
+  }
+}
+
+.animate-gemini-orbit-blue {
+  animation: geminiOrbitBlue 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-gemini-orbit-red {
+  animation: geminiOrbitRed 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-gemini-orbit-purple {
+  animation: geminiOrbitPurple 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-gemini-stream {
+  background-size: 300% 300%;
+  animation: geminiStream 4.5s ease infinite;
+}
+
+.animate-gemini-orb {
+  animation: geminiOrbBreath 2.6s ease-in-out infinite;
+}
+
+.animate-gemini-pulse {
+  animation: geminiPulseBlink 2.6s ease-in-out infinite;
+}
+
+/* Gemini animated border glow for cards & hero banners */
+.gemini-border-glow {
+  position: relative;
+}
+
+.gemini-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(90deg, #2563EB, #7C3AED, #EF4444, #F43F5E, #06B6D4, #2563EB);
+  background-size: 300% 300%;
+  animation: geminiBorderFlow 5s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Glowing Aurora Ambient Underlay */
+.gemini-ambient-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(239, 68, 68, 0.2) 40%, rgba(124, 58, 237, 0.1) 70%, transparent 85%);
+  filter: blur(48px);
+  pointer-events: none;
+  border-radius: 9999px;
+  animation: geminiStream 6s ease-in-out infinite alternate;
+}
